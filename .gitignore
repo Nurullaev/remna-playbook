@@ -1,0 +1,6 @@
+.env/
+collections/
+roles/geerlingguy.docker
+roles/geerlingguy.firewall
+group_vars/all.yml
+inventory/inventory.yml

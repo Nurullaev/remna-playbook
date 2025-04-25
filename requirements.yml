@@ -1,0 +1,7 @@
+---
+roles:
+  - name: geerlingguy.docker
+  - name: geerlingguy.firewall
+
+collections:
+  - name: devsec.hardening

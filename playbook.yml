@@ -1,0 +1,37 @@
+---
+- name: Hardening hosts
+  hosts: all
+  roles:
+    - devsec.hardening.os_hardening
+    - devsec.hardening.ssh_hardening
+  become: yes
+  tags:
+    - hardening
+
+- name: Configure firewall
+  hosts:
+    - all
+  roles:
+    - geerlingguy.firewall
+  become: true
+  tags:
+    - firewall
+
+- name: Configure docker
+  hosts:
+    - all
+  roles:
+    - geerlingguy.docker
+  become: true
+  tags:
+    - docker
+
+- name: Configure docker
+  hosts:
+    - central
+  roles:
+    - remna-server
+  become: true
+  tags:
+    - remna-server
+    - remna

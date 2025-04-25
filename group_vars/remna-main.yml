@@ -1,0 +1,8 @@
+firewall_allowed_tcp_ports:
+  - "22"
+  - "80"
+  - "443"
+
+sysctl_overwrite:
+      # Enable IPv4 traffic forwarding.
+  net.ipv4.ip_forward: 0
