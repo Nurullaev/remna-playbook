@@ -6,6 +6,17 @@
     mode: 0700
     state: directory
 
+- name: Change various sysctl-settings, look at the sysctl-vars file for documentation
+  ansible.posix.sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    sysctl_set: true
+    state: present
+    reload: true
+    ignoreerrors: true
+    sysctl_file: "{{ remna_sysctl_conf }}"
+  with_dict: "{{ remna_sysctl_default | combine(remna_sysctl | default({})) }}"
+
 - name: Create docker compose
   template:
     src: docker-compose.yaml.j2
