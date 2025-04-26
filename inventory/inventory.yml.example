@@ -1,4 +1,4 @@
-remna-main:
+remna_main:
   hosts:
     central:
       ansible_host: 1.1.1.1

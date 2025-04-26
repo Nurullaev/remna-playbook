@@ -35,3 +35,13 @@
   tags:
     - remna-server
     - remna
+      
+- name: Configure docker
+  hosts:
+    - remna_node
+  roles:
+    - remna-node
+  become: true
+  tags:
+    - remna-node
+    - remna
