@@ -1,29 +1,29 @@
 - name: Create remna dir
   file:
-    path: "{{ remna_install_path }}"
+    path: "{{ caddy_install_path }}"
     owner: root
     group: root
     mode: 0700
     state: directory
 
-- name: Create env file
-  template:
-    src: env.j2
-    dest: "{{ remna_install_path }}/env"
-    owner: root
-    group: root
-    mode: '0600'
-
 - name: Create docker compose
   template:
     src: docker-compose.yaml.j2
-    dest: "{{ remna_install_path }}/docker-compose.yaml"
+    dest: "{{ caddy_install_path }}/docker-compose.yaml"
     owner: root
     group: root
     mode: '0600'
+    
+- name: Create caddyfile
+  template:
+    src: Caddyfile.j2
+    dest: "{{ caddy_install_path }}/Caddyfile"
+    owner: root
+    group: root
+    mode: '0644'
 
 - name: Start compose file
   community.docker.docker_compose_v2:
-    project_src: "{{ remna_install_path }}"
+    project_src: "{{ caddy_install_path }}"
     remove_orphans: true
     state: present

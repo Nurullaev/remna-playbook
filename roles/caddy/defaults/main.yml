@@ -1,0 +1,5 @@
+caddy_install_path: /opt/caddy
+
+caddy_remna_config: true
+
+caddy_custom_config: ""

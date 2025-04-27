@@ -38,6 +38,15 @@
       
 - name: Configure docker
   hosts:
+    - central
+  roles:
+    - caddy
+  become: true
+  tags:
+    - caddy
+
+- name: Configure docker
+  hosts:
     - remna_node
   roles:
     - remna-node

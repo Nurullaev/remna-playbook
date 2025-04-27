@@ -49,22 +49,6 @@ services:
             timeout: 10s
             retries: 3
 
-    remna-caddy:
-        image: caddy:2.10.0
-        restart: unless-stopped
-        container_name: remna-caddy
-        hostname: remna-caddy
-        ports:
-          - "80:80"
-          - "443:443"
-          - "443:443/udp"
-        volumes:
-          - {{ remna_install_path }}/Caddyfile:/etc/caddy/Caddyfile
-          - caddy-data:/data
-          - caddy-config:/config
-        networks:
-            - remnawave-network
-
 networks:
     remnawave-network:
         name: remnawave-network
@@ -76,11 +60,3 @@ volumes:
         driver: local
         external: false
         name: {{ remna_redis_host }}-data
-    caddy-data:
-        driver: local
-        external: false
-        name: caddy-data
-    caddy-config:
-        driver: local
-        external: false
-        name: caddy-config

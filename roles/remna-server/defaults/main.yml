@@ -1,4 +1,5 @@
 remna_install_path: /opt/remnawave
+remna_caddy_custom_config: ""
 ### APP ###
 remna_app_port: 3000
 remna_metric_port: 3001

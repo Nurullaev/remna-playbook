@@ -1,0 +1,36 @@
+services:
+    caddy:
+        image: caddy:2.10.0
+        restart: unless-stopped
+        container_name: caddy
+        hostname: caddy
+        ports:
+          - "80:80"
+          - "443:443"
+          - "443:443/udp"
+        volumes:
+          - {{ caddy_install_path }}/Caddyfile:/etc/caddy/Caddyfile
+          - caddy-data:/data
+          - caddy-config:/config
+        networks:
+{% if caddy_remna_config %}
+            - remnawave-network
+{% endif %}
+
+networks:
+{% if caddy_remna_config %}
+    remnawave-network:
+        name: remnawave-network
+        driver: bridge
+        external: true
+{% endif %}
+
+volumes:
+    caddy-data:
+        driver: local
+        external: false
+        name: caddy-data
+    caddy-config:
+        driver: local
+        external: false
+        name: caddy-config
