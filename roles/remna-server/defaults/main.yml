@@ -3,7 +3,7 @@ remna_install_path: /opt/remnawave
 remna_app_port: 3000
 remna_metric_port: 3001
 
-remna_hwid_device_limit: false
+remna_hwid_device_limit: "false"
 remna_hwid_fallback_device_limit: 5
 remna_hwid_announce: "You have reached the maximum number of devices for your subscription."
 
