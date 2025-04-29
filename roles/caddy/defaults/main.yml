@@ -1,5 +1,5 @@
 caddy_install_path: /opt/caddy
 
-caddy_remna_config: true
+caddy_network_config:
 
 caddy_custom_config: ""

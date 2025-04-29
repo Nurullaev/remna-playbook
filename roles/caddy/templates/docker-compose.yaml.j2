@@ -12,17 +12,16 @@ services:
           - {{ caddy_install_path }}/Caddyfile:/etc/caddy/Caddyfile
           - caddy-data:/data
           - caddy-config:/config
+{% if caddy_network_config != None %}
         networks:
-{% if caddy_remna_config %}
-            - remnawave-network
+{% for key, value in caddy_network_config.items() %}
+          - {{ key }}
+{% endfor %}
 {% endif %}
 
+{% if caddy_network_config != None %}
 networks:
-{% if caddy_remna_config %}
-    remnawave-network:
-        name: remnawave-network
-        driver: bridge
-        external: true
+  {{ caddy_network_config | to_nice_yaml}}
 {% endif %}
 
 volumes:

@@ -28,3 +28,5 @@
 - name: Start compose file
   community.docker.docker_compose_v2:
     project_src: "{{ remna_install_path }}"
+    remove_orphans: true
+    state: present

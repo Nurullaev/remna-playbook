@@ -26,7 +26,7 @@
   tags:
     - docker
 
-- name: Configure docker
+- name: Configure remna server
   hosts:
     - central
   roles:
@@ -35,17 +35,27 @@
   tags:
     - remna-server
     - remna
-      
-- name: Configure docker
+
+#- name: Configure tailscale
+#  hosts:
+#    - main_tailscale
+#  roles:
+#    - headplane
+#  become: true
+#  tags:
+#    - tailscale
+
+- name: Configure caddy
   hosts:
     - central
+    - main_tailscale
   roles:
     - caddy
   become: true
   tags:
     - caddy
 
-- name: Configure docker
+- name: Configure remna node
   hosts:
     - remna_node
   roles:
