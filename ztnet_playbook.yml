@@ -26,32 +26,29 @@
   tags:
     - docker
 
-- name: Configure remna server
+- name: Configure ztnet
   hosts:
-    - central
+    - main_ztnet
   roles:
-    - remna-server
+    - ztnet
   become: true
   tags:
-    - remna-server
-    - remna
+    - ztnet
+
+- name: Configure ztnet
+  hosts:
+    - all
+  roles:
+    - zerotier
+  become: true
+  tags:
+    - zerotier
 
 - name: Configure caddy
   hosts:
-    - central
-    - main_tailscale
+    - main_ztnet
   roles:
     - caddy
   become: true
   tags:
     - caddy
-
-- name: Configure remna node
-  hosts:
-    - remna_node
-  roles:
-    - remna-node
-  become: true
-  tags:
-    - remna-node
-    - remna
