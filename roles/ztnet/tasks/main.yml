@@ -17,6 +17,14 @@
 
 - shell: curl -s https://install.zerotier.com | sudo bash
 
+- name: Create zerotier config
+  template:
+    src: local.conf.j2
+    dest: "/var/lib/zerotier-one/local.conf"
+    owner: zerotier-one
+    group: zerotier-one
+    mode: '0644'
+  notify: restart zerotier
 
 - name: Create docker compose
   template:

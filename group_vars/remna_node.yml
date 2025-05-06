@@ -1,1 +1,4 @@
 remna_app_port: 2223
+
+firewall_additional_rules:
+  - "iptables -A INPUT -s {{ zerotier_network }} -j ACCEPT"
