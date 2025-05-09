@@ -49,6 +49,21 @@ services:
             timeout: 10s
             retries: 3
 
+{% if remna_sub_page %}
+    remnawave-subscription-page:
+        image: remnawave/subscription-page:latest
+        container_name: remnawave-subscription-page
+        hostname: remnawave-subscription-page
+        restart: always
+        environment:
+            - REMNAWAVE_PLAIN_DOMAIN={{ remna_domain }}
+            - SUBSCRIPTION_PAGE_PORT=3010
+            - META_TITLE={{ remna_sub_title }}
+            - META_DESCRIPTION={{ remna_sub_description }}
+        networks:
+            - remnawave-network
+{% endif %}
+
 networks:
     remnawave-network:
         name: remnawave-network
