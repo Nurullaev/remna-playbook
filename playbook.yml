@@ -39,7 +39,6 @@
 - name: Configure caddy
   hosts:
     - central
-    - main_tailscale
   roles:
     - caddy
   become: true

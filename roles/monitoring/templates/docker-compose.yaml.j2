@@ -25,6 +25,24 @@ services:
     networks:
       - mon-network
 
+  kuma:
+     restart: always
+     container_name: kuma
+     networks:
+       - mon-network
+     volumes:
+       - '{{ mon_server_install_path }}/uptime-kuma:/app/data'
+     image: 'louislam/uptime-kuma:{{ mon_server_kuma_tag }}'
+
+  xray-checker:
+     restart: always
+     container_name: xray-checker
+     environment:
+        SUBSCRIPTION_URL: {{ mon_server_subscription }}
+     networks:
+       - mon-network
+     image: 'kutovoys/xray-checker'
+
 networks:
   mon-network:
     name: mon-network
@@ -32,4 +50,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.31.250.0/29
+        - subnet: 172.31.250.0/24

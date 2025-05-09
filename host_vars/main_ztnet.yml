@@ -8,10 +8,13 @@ firewall_allowed_udp_ports:
 
 firewall_additional_rules:
   - iptables -A INPUT -s 172.31.255.0/29 -p tcp --dport 9993 -j ACCEPT
-  - iptables -A INPUT -s 172.31.250.0/29 -j ACCEPT
+  - iptables -A INPUT -s 172.31.250.0/24 -j ACCEPT
   - iptables -A INPUT -s {{ zerotier_network }} -j ACCEPT
 
 caddy_config: |
+  https://{{ mon_server_kuma_domain }} {
+      reverse_proxy * http://kuma:3001
+  }
   https://{{ mon_server_domain_name }} {
       reverse_proxy * http://grafana:3000
   }
