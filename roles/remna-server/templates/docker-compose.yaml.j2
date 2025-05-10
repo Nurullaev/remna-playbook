@@ -56,7 +56,8 @@ services:
         hostname: remnawave-subscription-page
         restart: always
         environment:
-            - REMNAWAVE_PLAIN_DOMAIN={{ remna_domain }}
+            - REMNAWAVE_PLAIN_DOMAIN=remnawave:3000
+            - REQUEST_REMNAWAVE_SCHEME=http
             - SUBSCRIPTION_PAGE_PORT=3010
             - META_TITLE={{ remna_sub_title }}
             - META_DESCRIPTION={{ remna_sub_description }}
