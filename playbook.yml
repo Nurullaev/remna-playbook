@@ -30,7 +30,7 @@
   hosts:
     - central
   roles:
-    - remna-server
+    - iphizic.remna-server
   become: true
   tags:
     - remna-server
@@ -47,7 +47,7 @@
 
 - name: Configure remna node
   hosts:
-    - remna_node
+    - iphizic.remna_node
   roles:
     - remna-node
   become: true
